@@ -1,0 +1,26 @@
+config = record {
+  intervalDuration  : i32; 
+  intervalBreak     : i32; 
+
+  setSize           : i32;
+  setBreak          : i32;
+  setCount          : i32;
+}
+
+settingsViewModel = interface +c {
+  setIntervalDuration(d: i32);
+  setIntervalBreak(b: i32);
+  
+  setSetSize(s: i32);
+  setSetBreak(b: i32);
+  setSetCount(c: i32);
+}
+
+settingsView = interface +j +o {
+  setIntervalDuration(d: i32);
+  setIntervalBreak(b: i32);
+  
+  setSetSize(s: i32);
+  setSetBreak(b: i32);
+  setSetCount(c: i32);
+}
