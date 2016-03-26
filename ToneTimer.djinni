@@ -24,3 +24,7 @@ settingsView = interface +j +o {
   setSetBreak(b: i32);
   setSetCount(c: i32);
 }
+
+helloViewModel = interface +c {
+  getGreeting(name: string) : string;
+}
