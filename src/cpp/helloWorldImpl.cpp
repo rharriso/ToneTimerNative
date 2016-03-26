@@ -18,7 +18,10 @@ namespace tonetimer {
     HelloWorldImpl::HelloWorldImpl() { }
 
     std::string HelloWorldImpl::getGreeting(const std::string & name){
-        return "FUCKING NOW";
+        std::string response = "What's up ";
+        response.append(name);
+        response.append("?");
+        return response;
     }
     
 }
