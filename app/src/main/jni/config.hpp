@@ -7,11 +7,11 @@
 #include <utility>
 
 struct Config final {
-    int32_t intervalDuration = 30;
-    int32_t intervalBreak = 45;
-    int32_t setSize = 5;
-    int32_t setBreak = 90;
-    int32_t setCount = 5;
+    int32_t intervalDuration;
+    int32_t intervalBreak;
+    int32_t setSize;
+    int32_t setBreak;
+    int32_t setCount;
 
     Config(int32_t intervalDuration_,
            int32_t intervalBreak_,
