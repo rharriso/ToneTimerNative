@@ -1,27 +1,73 @@
-apply plugin: 'com.android.application'
+apply plugin: "com.android.model.application"
 
-android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+model {
+    android {
+        compileSdkVersion 23
+        buildToolsVersion "23.0.0"
 
-    defaultConfig {
-        applicationId "rharriso.tonetimer"
-        minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        defaultConfig.with {
+            applicationId "rharriso.tonetimer"
+            minSdkVersion.apiLevel 15
+            targetSdkVersion.apiLevel 22
+            versionCode 1
+            versionName "1.0"
+        }
+
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles.add(file("proguard-rules.pro"))
+            }
+        }
+
+        productFlavors {
+            create("flavor1") {
+                applicationId "rharriso.tonetimer"
+            }
+        }
+
+        sources {
+            main {
+                jni {
+                    source {
+                        srcDirs = [
+                                "../../deps/djinni/support-lib/jni",
+                                "../../generated-src/cpp",
+                                "../../generated-src/jni",
+                                "../../src/cpp"
+                        ]
+                    }
+                }
+
+                java {
+                    source {
+                        srcDirs = [
+                                "../../generated-src/java",
+                                "src/main/java"
+                        ]
+                    }
+                }
+            }
+        }
+        ndk {
+            toolchain = "gcc"
+            toolchainVersion = "4.9"
+            moduleName = "tonetimer"
+            stl = "gnustl_shared"
+            cppFlags.add("-std=c++11")
+            cppFlags.add("-fexceptions")
+            cppFlags.add("-frtti")
+            cppFlags.add("-I${file("../../deps/djinni/support-lib")}".toString())
+            cppFlags.add("-I${file("../../deps/djinni/support-lib/jni")}".toString())        // djinni src
+            cppFlags.add("-I${file("../../generated-src/cpp")}".toString())               // app generated-src
+            cppFlags.add("-I${file("../../generated-src/jni")}".toString())                   // app generated-src
+            cppFlags.add("-I${file("../../src/cpp")}".toString())
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:design:23.2.1'
+    compile fileTree(dir: "libs", include: ["*.jar"])
+    compile "com.android.support:appcompat-v7:22.2.0"
+    compile "com.android.support:design:23.1.1"
 }

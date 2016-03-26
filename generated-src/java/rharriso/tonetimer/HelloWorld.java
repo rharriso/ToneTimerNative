@@ -5,10 +5,12 @@ package rharriso.tonetimer;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class HelloViewModel {
+public abstract class HelloWorld {
     public abstract String getGreeting(String name);
 
-    private static final class CppProxy extends HelloViewModel
+    public static native HelloWorld create();
+
+    private static final class CppProxy extends HelloWorld
     {
         private final long nativeRef;
         private final AtomicBoolean destroyed = new AtomicBoolean(false);

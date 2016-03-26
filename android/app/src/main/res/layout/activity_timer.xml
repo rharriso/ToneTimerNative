@@ -21,8 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_timer"
-        android:id="@+id/Hello" />
+    <include layout="@layout/content_timer"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

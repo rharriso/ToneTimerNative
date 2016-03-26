@@ -3,13 +3,16 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 
 namespace tonetimer {
 
-class HelloViewModel {
+class HelloWorld {
 public:
-    virtual ~HelloViewModel() {}
+    virtual ~HelloWorld() {}
+
+    static std::shared_ptr<HelloWorld> create();
 
     virtual std::string getGreeting(const std::string & name) = 0;
 };

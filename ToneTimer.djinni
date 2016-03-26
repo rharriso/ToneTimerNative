@@ -25,6 +25,7 @@ settingsView = interface +j +o {
   setSetCount(c: i32);
 }
 
-helloViewModel = interface +c {
+helloWorld = interface +c {
+  static create(): helloWorld;
   getGreeting(name: string) : string;
 }

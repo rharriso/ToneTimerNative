@@ -11,6 +11,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class Timer extends AppCompatActivity {
+    static {
+        System.loadLibrary("gnustl_shared");
+        System.loadLibrary("tonetimer");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,7 @@ public class Timer extends AppCompatActivity {
         });
 
         TextView hello = (TextView) findViewById(R.id.Hello);
-        HelloViewModel hvm = HelloViewModel.create();
+        HelloWorld hvm = HelloWorld.create();
         hello.setText(hvm.getGreeting("Buster"));
     }
 
