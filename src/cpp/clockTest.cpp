@@ -22,8 +22,12 @@ int main(){
 
     auto clock = tonetimer::Clock::getSharedClock();
     clock->addListener("MAIN", [](chrono::milliseconds ms){
-        cout << ms.count() << endl;
+        cout << '\r' << ms.count();
     });
+    clock->play();
+
+    string ok;
+    cin >> ok;
 
     clock->removeListener("MAIN");
 

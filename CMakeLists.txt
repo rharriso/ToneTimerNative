@@ -21,3 +21,6 @@ add_library(ToneTimerNative
 add_executable(clockTest
     ${srcSrc}
     ${generatedSrc})
+
+find_package (Threads)
+target_link_libraries (clockTest ${CMAKE_THREAD_LIBS_INIT})

@@ -17,9 +17,11 @@ namespace tonetimer{
     class Clock {
     private:
         static shared_ptr<Clock> sharedClock;
+        time_point<high_resolution_clock> startTime;
 
         const milliseconds SWEEP_INTERVAL = milliseconds(8);
         unique_ptr<map<string, string, function<void(milliseconds)>>> listeners;
+        function<void(milliseconds)> listener;
 
     public:
         static std::shared_ptr<Clock> getSharedClock();
