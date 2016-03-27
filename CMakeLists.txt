@@ -19,6 +19,7 @@ add_library(ToneTimerNative
     ${srcSrc})
 
 add_executable(clockTest
+    clockTest.cpp
     ${srcSrc}
     ${generatedSrc})
 

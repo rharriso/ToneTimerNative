@@ -7,8 +7,11 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 #include <timerViewModel.hpp>
 #include "timerViewModelImpl.h"
+#include "Clock.h"
+
 
 namespace tonetimer {
 
@@ -18,6 +21,15 @@ namespace tonetimer {
 
     TimerViewModelImpl::TimerViewModelImpl(const std::shared_ptr<TimerView> &view) {
         this->mView = view;
+        auto c = Clock::getSharedClock();
+        c->addListener("YOLO", [this](std::chrono::milliseconds m){
+            std::string number;
+            std::stringstream strstream;
+            strstream << m.count();
+            strstream >> number;
+            mView->displayText(number);
+        });
+        c->play();
     }
 
     void TimerViewModelImpl::pause() {
