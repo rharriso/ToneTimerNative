@@ -3,6 +3,7 @@
 
 #import <Foundation/Foundation.h>
 @class TTTimerViewModel;
+@protocol TTTimerView;
 
 
 /**
@@ -12,7 +13,7 @@
  */
 @interface TTTimerViewModel : NSObject
 
-+ (nullable TTTimerViewModel *)create;
++ (nullable TTTimerViewModel *)createWithView:(nullable id<TTTimerView>)view;
 
 - (void)pause;
 

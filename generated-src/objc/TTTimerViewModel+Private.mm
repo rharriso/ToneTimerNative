@@ -5,6 +5,7 @@
 #import "TTTimerViewModel.h"
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
+#import "TTTimerView+Private.h"
 #import "TTTimerViewModel+Private.h"
 #include <exception>
 #include <utility>
@@ -29,9 +30,9 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     return self;
 }
 
-+ (nullable TTTimerViewModel *)create {
++ (nullable TTTimerViewModel *)createWithView:(nullable id<TTTimerView>)view {
     try {
-        auto r = ::tonetimer::TimerViewModel::create();
+        auto r = ::tonetimer::TimerViewModel::createWithView(::djinni_generated::TimerView::toCpp(view));
         return ::djinni_generated::TimerViewModel::fromCpp(r);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

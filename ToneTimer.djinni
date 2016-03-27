@@ -38,14 +38,12 @@ settingsView = interface +j +o {
 # Timer View 
 #
 timerViewModel = interface +c {
-  static create() : timerViewModel;
+  static createWithView(view: timerView) : timerViewModel;
   pause();
   play();
   reset();
 }
 
 timerView = interface +j +o {
-  setStateTime(t: i32);
-  setTotalTime(t: i32);
-  setRemainTime(t: i32);
+  displayText(s: string);
 }

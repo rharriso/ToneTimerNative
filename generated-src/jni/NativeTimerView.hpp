@@ -33,18 +33,14 @@ private:
         JavaProxy(JniType j);
         ~JavaProxy();
 
-        void setStateTime(int32_t t) override;
-        void setTotalTime(int32_t t) override;
-        void setRemainTime(int32_t t) override;
+        void displayText(const std::string & s) override;
 
     private:
         friend ::djinni::JniInterface<::tonetimer::TimerView, ::djinni_generated::NativeTimerView>;
     };
 
     const ::djinni::GlobalRef<jclass> clazz { ::djinni::jniFindClass("rharriso/tonetimer/TimerView") };
-    const jmethodID method_setStateTime { ::djinni::jniGetMethodID(clazz.get(), "setStateTime", "(I)V") };
-    const jmethodID method_setTotalTime { ::djinni::jniGetMethodID(clazz.get(), "setTotalTime", "(I)V") };
-    const jmethodID method_setRemainTime { ::djinni::jniGetMethodID(clazz.get(), "setRemainTime", "(I)V") };
+    const jmethodID method_displayText { ::djinni::jniGetMethodID(clazz.get(), "displayText", "(Ljava/lang/String;)V") };
 };
 
 }  // namespace djinni_generated

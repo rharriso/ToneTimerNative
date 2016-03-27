@@ -17,7 +17,7 @@ public abstract class TimerViewModel {
 
     public abstract void reset();
 
-    public static native TimerViewModel create();
+    public static native TimerViewModel createWithView(TimerView view);
 
     private static final class CppProxy extends TimerViewModel
     {

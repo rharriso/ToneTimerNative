@@ -6,10 +6,6 @@
 
 @protocol TTTimerView
 
-- (void)setStateTime:(int32_t)t;
-
-- (void)setTotalTime:(int32_t)t;
-
-- (void)setRemainTime:(int32_t)t;
+- (void)displayText:(nonnull NSString *)s;
 
 @end

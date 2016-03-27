@@ -18,6 +18,7 @@ public class Timer extends AppCompatActivity {
     }
 
     TimerViewModel viewModel;
+    TextView outputView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,13 @@ public class Timer extends AppCompatActivity {
             }
         });
 
-        viewModel = TimerViewModel.create();
+        outputView = (TextView) findViewById(R.id.outText);
+        viewModel = TimerViewModel.createWithView(new TimerView() {
+            @Override
+            public void displayText(String s) {
+                outputView.setText(s);
+            }
+        });
 
         /*
             Bind buttons

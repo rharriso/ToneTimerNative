@@ -7,6 +7,8 @@
 
 namespace tonetimer {
 
+class TimerView;
+
 /**
  *
  * Timer View 
@@ -16,7 +18,7 @@ class TimerViewModel {
 public:
     virtual ~TimerViewModel() {}
 
-    static std::shared_ptr<TimerViewModel> create();
+    static std::shared_ptr<TimerViewModel> createWithView(const std::shared_ptr<TimerView> & view);
 
     virtual void pause() = 0;
 

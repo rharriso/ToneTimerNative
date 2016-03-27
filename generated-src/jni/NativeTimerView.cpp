@@ -14,28 +14,12 @@ NativeTimerView::JavaProxy::JavaProxy(JniType j) : Handle(::djinni::jniGetThread
 
 NativeTimerView::JavaProxy::~JavaProxy() = default;
 
-void NativeTimerView::JavaProxy::setStateTime(int32_t c_t) {
+void NativeTimerView::JavaProxy::displayText(const std::string & c_s) {
     auto jniEnv = ::djinni::jniGetThreadEnv();
     ::djinni::JniLocalScope jscope(jniEnv, 10);
     const auto& data = ::djinni::JniClass<::djinni_generated::NativeTimerView>::get();
-    jniEnv->CallVoidMethod(Handle::get().get(), data.method_setStateTime,
-                           ::djinni::get(::djinni::I32::fromCpp(jniEnv, c_t)));
-    ::djinni::jniExceptionCheck(jniEnv);
-}
-void NativeTimerView::JavaProxy::setTotalTime(int32_t c_t) {
-    auto jniEnv = ::djinni::jniGetThreadEnv();
-    ::djinni::JniLocalScope jscope(jniEnv, 10);
-    const auto& data = ::djinni::JniClass<::djinni_generated::NativeTimerView>::get();
-    jniEnv->CallVoidMethod(Handle::get().get(), data.method_setTotalTime,
-                           ::djinni::get(::djinni::I32::fromCpp(jniEnv, c_t)));
-    ::djinni::jniExceptionCheck(jniEnv);
-}
-void NativeTimerView::JavaProxy::setRemainTime(int32_t c_t) {
-    auto jniEnv = ::djinni::jniGetThreadEnv();
-    ::djinni::JniLocalScope jscope(jniEnv, 10);
-    const auto& data = ::djinni::JniClass<::djinni_generated::NativeTimerView>::get();
-    jniEnv->CallVoidMethod(Handle::get().get(), data.method_setRemainTime,
-                           ::djinni::get(::djinni::I32::fromCpp(jniEnv, c_t)));
+    jniEnv->CallVoidMethod(Handle::get().get(), data.method_displayText,
+                           ::djinni::get(::djinni::String::fromCpp(jniEnv, c_s)));
     ::djinni::jniExceptionCheck(jniEnv);
 }
 

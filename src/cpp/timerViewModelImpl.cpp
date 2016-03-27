@@ -11,20 +11,25 @@
 #include "timerViewModelImpl.h"
 
 namespace tonetimer {
-    std::shared_ptr<TimerViewModel> TimerViewModel::create() {
-        return std::make_shared<TimerViewModelImpl>();
+
+    std::shared_ptr<TimerViewModel> TimerViewModel::createWithView(const std::shared_ptr<TimerView> & view){
+        return std::make_shared<TimerViewModelImpl>(view);
+    }
+
+    TimerViewModelImpl::TimerViewModelImpl(const std::shared_ptr<TimerView> &view) {
+        this->mView = view;
     }
 
     void TimerViewModelImpl::pause() {
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        mView->displayText(__PRETTY_FUNCTION__);
     }
 
     void TimerViewModelImpl::play() {
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        mView->displayText(__PRETTY_FUNCTION__);
     }
 
     void TimerViewModelImpl::reset() {
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        mView->displayText(__PRETTY_FUNCTION__);
     }
 }
 

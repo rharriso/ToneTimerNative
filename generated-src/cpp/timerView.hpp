@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <cstdint>
+#include <string>
 
 namespace tonetimer {
 
@@ -11,11 +11,7 @@ class TimerView {
 public:
     virtual ~TimerView() {}
 
-    virtual void setStateTime(int32_t t) = 0;
-
-    virtual void setTotalTime(int32_t t) = 0;
-
-    virtual void setRemainTime(int32_t t) = 0;
+    virtual void displayText(const std::string & s) = 0;
 };
 
 }  // namespace tonetimer

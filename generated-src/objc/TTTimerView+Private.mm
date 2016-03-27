@@ -16,22 +16,10 @@ class TimerView::ObjcProxy final
 {
 public:
     using Handle::Handle;
-    void setStateTime(int32_t c_t) override
+    void displayText(const std::string & c_s) override
     {
         @autoreleasepool {
-            [Handle::get() setStateTime:(::djinni::I32::fromCpp(c_t))];
-        }
-    }
-    void setTotalTime(int32_t c_t) override
-    {
-        @autoreleasepool {
-            [Handle::get() setTotalTime:(::djinni::I32::fromCpp(c_t))];
-        }
-    }
-    void setRemainTime(int32_t c_t) override
-    {
-        @autoreleasepool {
-            [Handle::get() setRemainTime:(::djinni::I32::fromCpp(c_t))];
+            [Handle::get() displayText:(::djinni::String::fromCpp(c_s))];
         }
     }
 };

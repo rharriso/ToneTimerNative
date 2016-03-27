@@ -4,9 +4,5 @@
 package rharriso.tonetimer;
 
 public abstract class TimerView {
-    public abstract void setStateTime(int t);
-
-    public abstract void setTotalTime(int t);
-
-    public abstract void setRemainTime(int t);
+    public abstract void displayText(String s);
 }
