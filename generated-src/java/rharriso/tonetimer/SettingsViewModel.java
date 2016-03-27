@@ -5,16 +5,31 @@ package rharriso.tonetimer;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ *
+ * Settings View
+ *
+ */
 public abstract class SettingsViewModel {
-    public abstract void setIntervalDuration(int d);
+    public abstract void incIntervalDuration();
 
-    public abstract void setIntervalBreak(int b);
+    public abstract void decIntervalDuration();
 
-    public abstract void setSetSize(int s);
+    public abstract void incIntervalBreak();
 
-    public abstract void setSetBreak(int b);
+    public abstract void decIntervalBreak();
 
-    public abstract void setSetCount(int c);
+    public abstract void incSetSize();
+
+    public abstract void decSetSize();
+
+    public abstract void incSetCount();
+
+    public abstract void decSetCount();
+
+    public abstract void incSetBreak();
+
+    public abstract void decSetBreak();
 
     private static final class CppProxy extends SettingsViewModel
     {
@@ -40,43 +55,83 @@ public abstract class SettingsViewModel {
         }
 
         @Override
-        public void setIntervalDuration(int d)
+        public void incIntervalDuration()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_setIntervalDuration(this.nativeRef, d);
+            native_incIntervalDuration(this.nativeRef);
         }
-        private native void native_setIntervalDuration(long _nativeRef, int d);
+        private native void native_incIntervalDuration(long _nativeRef);
 
         @Override
-        public void setIntervalBreak(int b)
+        public void decIntervalDuration()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_setIntervalBreak(this.nativeRef, b);
+            native_decIntervalDuration(this.nativeRef);
         }
-        private native void native_setIntervalBreak(long _nativeRef, int b);
+        private native void native_decIntervalDuration(long _nativeRef);
 
         @Override
-        public void setSetSize(int s)
+        public void incIntervalBreak()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_setSetSize(this.nativeRef, s);
+            native_incIntervalBreak(this.nativeRef);
         }
-        private native void native_setSetSize(long _nativeRef, int s);
+        private native void native_incIntervalBreak(long _nativeRef);
 
         @Override
-        public void setSetBreak(int b)
+        public void decIntervalBreak()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_setSetBreak(this.nativeRef, b);
+            native_decIntervalBreak(this.nativeRef);
         }
-        private native void native_setSetBreak(long _nativeRef, int b);
+        private native void native_decIntervalBreak(long _nativeRef);
 
         @Override
-        public void setSetCount(int c)
+        public void incSetSize()
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
-            native_setSetCount(this.nativeRef, c);
+            native_incSetSize(this.nativeRef);
         }
-        private native void native_setSetCount(long _nativeRef, int c);
+        private native void native_incSetSize(long _nativeRef);
+
+        @Override
+        public void decSetSize()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_decSetSize(this.nativeRef);
+        }
+        private native void native_decSetSize(long _nativeRef);
+
+        @Override
+        public void incSetCount()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_incSetCount(this.nativeRef);
+        }
+        private native void native_incSetCount(long _nativeRef);
+
+        @Override
+        public void decSetCount()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_decSetCount(this.nativeRef);
+        }
+        private native void native_decSetCount(long _nativeRef);
+
+        @Override
+        public void incSetBreak()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_incSetBreak(this.nativeRef);
+        }
+        private native void native_incSetBreak(long _nativeRef);
+
+        @Override
+        public void decSetBreak()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_decSetBreak(this.nativeRef);
+        }
+        private native void native_decSetBreak(long _nativeRef);
     }
 }

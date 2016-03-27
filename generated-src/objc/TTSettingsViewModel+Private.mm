@@ -5,7 +5,6 @@
 #import "TTSettingsViewModel.h"
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
-#import "DJIMarshal+Private.h"
 #include <exception>
 #include <utility>
 
@@ -29,33 +28,63 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     return self;
 }
 
-- (void)setIntervalDuration:(int32_t)d {
+- (void)incIntervalDuration {
     try {
-        _cppRefHandle.get()->setIntervalDuration(::djinni::I32::toCpp(d));
+        _cppRefHandle.get()->incIntervalDuration();
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (void)setIntervalBreak:(int32_t)b {
+- (void)decIntervalDuration {
     try {
-        _cppRefHandle.get()->setIntervalBreak(::djinni::I32::toCpp(b));
+        _cppRefHandle.get()->decIntervalDuration();
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (void)setSetSize:(int32_t)s {
+- (void)incIntervalBreak {
     try {
-        _cppRefHandle.get()->setSetSize(::djinni::I32::toCpp(s));
+        _cppRefHandle.get()->incIntervalBreak();
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (void)setSetBreak:(int32_t)b {
+- (void)decIntervalBreak {
     try {
-        _cppRefHandle.get()->setSetBreak(::djinni::I32::toCpp(b));
+        _cppRefHandle.get()->decIntervalBreak();
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (void)setSetCount:(int32_t)c {
+- (void)incSetSize {
     try {
-        _cppRefHandle.get()->setSetCount(::djinni::I32::toCpp(c));
+        _cppRefHandle.get()->incSetSize();
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)decSetSize {
+    try {
+        _cppRefHandle.get()->decSetSize();
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)incSetCount {
+    try {
+        _cppRefHandle.get()->incSetCount();
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)decSetCount {
+    try {
+        _cppRefHandle.get()->decSetCount();
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)incSetBreak {
+    try {
+        _cppRefHandle.get()->incSetBreak();
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (void)decSetBreak {
+    try {
+        _cppRefHandle.get()->decSetBreak();
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

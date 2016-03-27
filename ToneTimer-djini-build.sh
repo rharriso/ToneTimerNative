@@ -16,8 +16,9 @@ namespace="tonetimer"
 objc_prefix="TT"
 djinni_file="ToneTimer.djinni"
 
+rm -r ./generated-src
 
-djinni --java-out $java_out \
+./deps/djinni/src/run --java-out $java_out \
   --java-package $java_package \
   --ident-java-field mFooBar \
   \

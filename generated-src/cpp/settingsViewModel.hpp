@@ -3,23 +3,36 @@
 
 #pragma once
 
-#include <cstdint>
-
 namespace tonetimer {
 
+/**
+ *
+ * Settings View
+ *
+ */
 class SettingsViewModel {
 public:
     virtual ~SettingsViewModel() {}
 
-    virtual void setIntervalDuration(int32_t d) = 0;
+    virtual void incIntervalDuration() = 0;
 
-    virtual void setIntervalBreak(int32_t b) = 0;
+    virtual void decIntervalDuration() = 0;
 
-    virtual void setSetSize(int32_t s) = 0;
+    virtual void incIntervalBreak() = 0;
 
-    virtual void setSetBreak(int32_t b) = 0;
+    virtual void decIntervalBreak() = 0;
 
-    virtual void setSetCount(int32_t c) = 0;
+    virtual void incSetSize() = 0;
+
+    virtual void decSetSize() = 0;
+
+    virtual void incSetCount() = 0;
+
+    virtual void decSetCount() = 0;
+
+    virtual void incSetBreak() = 0;
+
+    virtual void decSetBreak() = 0;
 };
 
 }  // namespace tonetimer

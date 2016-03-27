@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Timer extends AppCompatActivity {
@@ -15,6 +16,8 @@ public class Timer extends AppCompatActivity {
         System.loadLibrary("gnustl_shared");
         System.loadLibrary("tonetimer");
     }
+
+    TimerViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +35,21 @@ public class Timer extends AppCompatActivity {
             }
         });
 
-        TextView hello = (TextView) findViewById(R.id.Hello);
-        HelloWorld hvm = HelloWorld.create();
-        hello.setText(hvm.getGreeting("Buster"));
+        viewModel = TimerViewModel.create();
+
+        // bind buttons
+        Button playBtn = (Button) findViewById(R.id.playBtn);
+        playBtn.setOnClickListener((View v) -> {
+            viewModel.play();
+        });
+        Button pauseBtn = (Button) findViewById(R.id.pauseBtn);
+        pauseBtn.setOnClickListener((View v) -> {
+           viewModel.pause();
+        });
+        Button resetBtn = (Button) findViewById(R.id.resetBtn);
+        resetBtn.setOnClickListener((View v) -> {
+            viewModel.reset();
+        });
     }
 
     @Override

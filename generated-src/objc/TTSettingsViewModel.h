@@ -4,16 +4,31 @@
 #import <Foundation/Foundation.h>
 
 
+/**
+ *
+ * Settings View
+ *
+ */
 @interface TTSettingsViewModel : NSObject
 
-- (void)setIntervalDuration:(int32_t)d;
+- (void)incIntervalDuration;
 
-- (void)setIntervalBreak:(int32_t)b;
+- (void)decIntervalDuration;
 
-- (void)setSetSize:(int32_t)s;
+- (void)incIntervalBreak;
 
-- (void)setSetBreak:(int32_t)b;
+- (void)decIntervalBreak;
 
-- (void)setSetCount:(int32_t)c;
+- (void)incSetSize;
+
+- (void)decSetSize;
+
+- (void)incSetCount;
+
+- (void)decSetCount;
+
+- (void)incSetBreak;
+
+- (void)decSetBreak;
 
 @end

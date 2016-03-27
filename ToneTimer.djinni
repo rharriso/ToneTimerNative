@@ -7,13 +7,21 @@ config = record {
   setCount          : i32;
 }
 
+#
+# Settings View
+#
 settingsViewModel = interface +c {
-  setIntervalDuration(d: i32);
-  setIntervalBreak(b: i32);
-  
-  setSetSize(s: i32);
-  setSetBreak(b: i32);
-  setSetCount(c: i32);
+  incIntervalDuration();
+  decIntervalDuration();
+  incIntervalBreak();
+  decIntervalBreak();
+ 
+  incSetSize();
+  decSetSize();
+  incSetCount();
+  decSetCount();
+  incSetBreak();
+  decSetBreak();
 }
 
 settingsView = interface +j +o {
@@ -25,7 +33,18 @@ settingsView = interface +j +o {
   setSetCount(c: i32);
 }
 
-helloWorld = interface +c {
-  static create(): helloWorld;
-  getGreeting(name: string) : string;
+#
+# Timer View 
+#
+timerViewModel = interface +c {
+  create() : timerViewModel;
+  pause();
+  play();
+  reset();
+}
+
+timerView = interface +j +o {
+  setStateTime(t: i32);
+  setTotalTime(t: i32);
+  setRemainTime(t: i32);
 }

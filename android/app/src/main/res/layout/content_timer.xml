@@ -12,6 +12,24 @@
     tools:context="rharriso.tonetimer.Timer"
     tools:showIn="@layout/activity_timer">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pauseBtn"
+        android:text="pause"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/playBtn"
+        android:text="play"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resetBtn"
+        android:text="reset"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
