@@ -29,9 +29,9 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     return self;
 }
 
-- (nullable TTTimerViewModel *)create {
++ (nullable TTTimerViewModel *)create {
     try {
-        auto r = _cppRefHandle.get()->create();
+        auto r = ::tonetimer::TimerViewModel::create();
         return ::djinni_generated::TimerViewModel::fromCpp(r);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

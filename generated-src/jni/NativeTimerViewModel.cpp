@@ -19,12 +19,11 @@ CJNIEXPORT void JNICALL Java_rharriso_tonetimer_TimerViewModel_00024CppProxy_nat
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
 }
 
-CJNIEXPORT jobject JNICALL Java_rharriso_tonetimer_TimerViewModel_00024CppProxy_native_1create(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef)
+CJNIEXPORT jobject JNICALL Java_rharriso_tonetimer_TimerViewModel_create(JNIEnv* jniEnv, jobject /*this*/)
 {
     try {
-        DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
-        const auto& ref = ::djinni::objectFromHandleAddress<::tonetimer::TimerViewModel>(nativeRef);
-        auto r = ref->create();
+        DJINNI_FUNCTION_PROLOGUE0(jniEnv);
+        auto r = ::tonetimer::TimerViewModel::create();
         return ::djinni::release(::djinni_generated::NativeTimerViewModel::fromCpp(jniEnv, r));
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }

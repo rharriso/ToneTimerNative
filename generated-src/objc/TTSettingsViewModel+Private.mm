@@ -5,6 +5,7 @@
 #import "TTSettingsViewModel.h"
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
+#import "TTSettingsViewModel+Private.h"
 #include <exception>
 #include <utility>
 
@@ -26,6 +27,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
         _cppRefHandle.assign(cppRef);
     }
     return self;
+}
+
++ (nullable TTSettingsViewModel *)create {
+    try {
+        auto r = ::tonetimer::SettingsViewModel::create();
+        return ::djinni_generated::SettingsViewModel::fromCpp(r);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
 - (void)incIntervalDuration {

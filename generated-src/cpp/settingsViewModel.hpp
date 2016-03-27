@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include <memory>
+
 namespace tonetimer {
 
 /**
@@ -14,24 +16,17 @@ class SettingsViewModel {
 public:
     virtual ~SettingsViewModel() {}
 
+    static std::shared_ptr<SettingsViewModel> create();
+
     virtual void incIntervalDuration() = 0;
-
     virtual void decIntervalDuration() = 0;
-
     virtual void incIntervalBreak() = 0;
-
     virtual void decIntervalBreak() = 0;
-
     virtual void incSetSize() = 0;
-
     virtual void decSetSize() = 0;
-
     virtual void incSetCount() = 0;
-
     virtual void decSetCount() = 0;
-
     virtual void incSetBreak() = 0;
-
     virtual void decSetBreak() = 0;
 };
 

@@ -16,7 +16,7 @@ class TimerViewModel {
 public:
     virtual ~TimerViewModel() {}
 
-    virtual std::shared_ptr<TimerViewModel> create() = 0;
+    static std::shared_ptr<TimerViewModel> create();
 
     virtual void pause() = 0;
 

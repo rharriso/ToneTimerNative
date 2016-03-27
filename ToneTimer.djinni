@@ -11,6 +11,7 @@ config = record {
 # Settings View
 #
 settingsViewModel = interface +c {
+  static create() : settingsViewModel;
   incIntervalDuration();
   decIntervalDuration();
   incIntervalBreak();
@@ -37,7 +38,7 @@ settingsView = interface +j +o {
 # Timer View 
 #
 timerViewModel = interface +c {
-  create() : timerViewModel;
+  static create() : timerViewModel;
   pause();
   play();
   reset();

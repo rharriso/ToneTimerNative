@@ -12,7 +12,7 @@
  */
 @interface TTTimerViewModel : NSObject
 
-- (nullable TTTimerViewModel *)create;
++ (nullable TTTimerViewModel *)create;
 
 - (void)pause;
 

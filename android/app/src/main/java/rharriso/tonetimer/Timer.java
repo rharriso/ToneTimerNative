@@ -37,18 +37,29 @@ public class Timer extends AppCompatActivity {
 
         viewModel = TimerViewModel.create();
 
-        // bind buttons
+        /*
+            Bind buttons
+         */
         Button playBtn = (Button) findViewById(R.id.playBtn);
-        playBtn.setOnClickListener((View v) -> {
-            viewModel.play();
+        playBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.play();
+            }
         });
         Button pauseBtn = (Button) findViewById(R.id.pauseBtn);
-        pauseBtn.setOnClickListener((View v) -> {
-           viewModel.pause();
+        pauseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.pause();
+            }
         });
         Button resetBtn = (Button) findViewById(R.id.resetBtn);
-        resetBtn.setOnClickListener((View v) -> {
-            viewModel.reset();
+        resetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.reset();
+            }
         });
     }
 

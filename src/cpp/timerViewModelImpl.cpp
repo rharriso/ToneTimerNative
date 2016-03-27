@@ -7,28 +7,24 @@
 
 #include <string>
 #include <iostream>
-#include <timerViewModelImpl.h>
 #include <timerViewModel.hpp>
+#include "timerViewModelImpl.h"
 
 namespace tonetimer {
-
     std::shared_ptr<TimerViewModel> TimerViewModel::create() {
         return std::make_shared<TimerViewModelImpl>();
     }
 
-    TimerViewModelImpl::TimerViewModelImpl() { }
-
-
     void TimerViewModelImpl::pause() {
-        std::cout << "pause";
+        std::cout << __PRETTY_FUNCTION__ << std::endl;
     }
 
     void TimerViewModelImpl::play() {
-        std::cout << "play";
+        std::cout << __PRETTY_FUNCTION__ << std::endl;
     }
 
     void TimerViewModelImpl::reset() {
-        std::cout << "reset";
+        std::cout << __PRETTY_FUNCTION__ << std::endl;
     }
 }
 

@@ -11,13 +11,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
  *
  */
 public abstract class TimerViewModel {
-    public abstract TimerViewModel create();
-
     public abstract void pause();
 
     public abstract void play();
 
     public abstract void reset();
+
+    public static native TimerViewModel create();
 
     private static final class CppProxy extends TimerViewModel
     {
@@ -41,14 +41,6 @@ public abstract class TimerViewModel {
             destroy();
             super.finalize();
         }
-
-        @Override
-        public TimerViewModel create()
-        {
-            assert !this.destroyed.get() : "trying to use a destroyed object";
-            return native_create(this.nativeRef);
-        }
-        private native TimerViewModel native_create(long _nativeRef);
 
         @Override
         public void pause()

@@ -31,6 +31,8 @@ public abstract class SettingsViewModel {
 
     public abstract void decSetBreak();
 
+    public static native SettingsViewModel create();
+
     private static final class CppProxy extends SettingsViewModel
     {
         private final long nativeRef;
