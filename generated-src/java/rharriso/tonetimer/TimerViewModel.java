@@ -17,6 +17,9 @@ public abstract class TimerViewModel {
 
     public abstract void reset();
 
+    /** respond to clock event from native layer */
+    public abstract void onTick();
+
     public static native TimerViewModel createWithView(TimerView view);
 
     private static final class CppProxy extends TimerViewModel
@@ -65,5 +68,13 @@ public abstract class TimerViewModel {
             native_reset(this.nativeRef);
         }
         private native void native_reset(long _nativeRef);
+
+        @Override
+        public void onTick()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            native_onTick(this.nativeRef);
+        }
+        private native void native_onTick(long _nativeRef);
     }
 }

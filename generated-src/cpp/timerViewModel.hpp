@@ -25,6 +25,9 @@ public:
     virtual void play() = 0;
 
     virtual void reset() = 0;
+
+    /** respond to clock event from native layer */
+    virtual void onTick() = 0;
 };
 
 }  // namespace tonetimer

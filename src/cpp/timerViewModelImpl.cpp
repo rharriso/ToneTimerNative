@@ -9,27 +9,23 @@
 #include <iostream>
 #include <sstream>
 #include <timerViewModel.hpp>
+#include <chrono>
 #include "timerViewModelImpl.h"
-#include "Clock.h"
+#include <sstream>
 
+using namespace std;
 
 namespace tonetimer {
 
-    std::shared_ptr<TimerViewModel> TimerViewModel::createWithView(const std::shared_ptr<TimerView> & view){
-        return std::make_shared<TimerViewModelImpl>(view);
+    chrono::time_point<chrono::high_resolution_clock> start;
+
+    shared_ptr<TimerViewModel> TimerViewModel::createWithView(const shared_ptr<TimerView> & view){
+        return make_shared<TimerViewModelImpl>(view);
     }
 
-    TimerViewModelImpl::TimerViewModelImpl(const std::shared_ptr<TimerView> &view) {
+    TimerViewModelImpl::TimerViewModelImpl(const shared_ptr<TimerView> &view) {
         this->mView = view;
-        auto c = Clock::getSharedClock();
-        c->addListener("YOLO", [this](std::chrono::milliseconds m){
-            std::string number;
-            std::stringstream strstream;
-            strstream << m.count();
-            strstream >> number;
-            mView->displayText(number);
-        });
-        c->play();
+        start = chrono::high_resolution_clock::now();
     }
 
     void TimerViewModelImpl::pause() {
@@ -42,6 +38,15 @@ namespace tonetimer {
 
     void TimerViewModelImpl::reset() {
         mView->displayText(__PRETTY_FUNCTION__);
+    }
+
+    void TimerViewModelImpl::onTick() {
+        auto now = chrono::high_resolution_clock::now();
+        stringstream ss;
+        string numString;
+        ss << (now - start).count();
+        ss >> numString;
+        mView->displayText(numString);
     }
 }
 

@@ -56,4 +56,13 @@ CJNIEXPORT void JNICALL Java_rharriso_tonetimer_TimerViewModel_00024CppProxy_nat
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
 }
 
+CJNIEXPORT void JNICALL Java_rharriso_tonetimer_TimerViewModel_00024CppProxy_native_1onTick(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef)
+{
+    try {
+        DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
+        const auto& ref = ::djinni::objectFromHandleAddress<::tonetimer::TimerViewModel>(nativeRef);
+        ref->onTick();
+    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
+}
+
 }  // namespace djinni_generated

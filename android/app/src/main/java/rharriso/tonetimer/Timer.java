@@ -52,6 +52,7 @@ public class Timer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 viewModel.play();
+                viewModel.onTick();
             }
         });
         Button pauseBtn = (Button) findViewById(R.id.pauseBtn);

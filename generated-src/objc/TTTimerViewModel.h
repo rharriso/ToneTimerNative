@@ -21,4 +21,7 @@
 
 - (void)reset;
 
+/** respond to clock event from native layer */
+- (void)onTick;
+
 @end

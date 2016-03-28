@@ -14,6 +14,7 @@ namespace tonetimer {
         void pause();
         void play();
         void reset();
+        void onTick();
 
         std::shared_ptr<TimerView> mView;
     };
