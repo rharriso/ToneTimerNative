@@ -37,13 +37,5 @@ namespace tonetimer {
     }
 
     void Clock::play() {
-        std::async(std::launch::async, [this]() {
-            while (true) {
-                auto now = chrono::high_resolution_clock::now();
-                auto durr = duration_cast<milliseconds>(now - startTime);
-                listener(durr);
-                std::this_thread::sleep_for(SWEEP_INTERVAL);
-            }
-        });
     }
 }

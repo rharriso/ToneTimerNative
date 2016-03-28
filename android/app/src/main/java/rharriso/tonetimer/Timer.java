@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.os.Handler;
 
 public class Timer extends AppCompatActivity {
     static {
@@ -52,7 +53,6 @@ public class Timer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 viewModel.play();
-                viewModel.onTick();
             }
         });
         Button pauseBtn = (Button) findViewById(R.id.pauseBtn);
@@ -69,6 +69,18 @@ public class Timer extends AppCompatActivity {
                 viewModel.reset();
             }
         });
+
+        /*
+            Start the clock
+         */
+        final Handler h = new Handler();
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                viewModel.onTick();
+                h.postDelayed(this, 10);
+            }
+        }, 10);
     }
 
     @Override

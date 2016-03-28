@@ -43,6 +43,7 @@ timerViewModel = interface +c {
   play();
   reset();
 
+  # clock tick performed by native layer
   # respond to clock event from native layer
   onTick();  
 }
