@@ -23,19 +23,33 @@ namespace tonetimer {
         return Clock::sharedClock;
     }
 
-    Clock::Clock() {
-        listeners = make_unique<map<string, string, function<void(milliseconds)>>>();
-        startTime = chrono::high_resolution_clock::now();
+   Clock::Clock() {}
+
+    void Clock::pause() {
+        if(state == PLAYING) {
+            priorTime = priorTime +
+                duration_cast<milliseconds>(high_resolution_clock::now() - startTime);
+        }
+        state = ClockState::PAUSED;
     }
-
-    void Clock::addListener(string listenerUID, function<void(milliseconds)> lambda) {
-        listener = lambda;
-    }
-
-    void Clock::removeListener(string listenerUID) {
-
+    void Clock::stop() {
+        priorTime = milliseconds(0);
+        state = ClockState::PAUSED;
     }
 
     void Clock::play() {
+        if(state == ClockState::STOPPED || state == ClockState::PAUSED) {
+            startTime = high_resolution_clock::now();
+        }
+
+        state = ClockState::PLAYING;
+    }
+
+    milliseconds Clock::getTime() {
+        if(state == ClockState::PLAYING)
+            return duration_cast<milliseconds>(high_resolution_clock::now() - startTime)
+                + priorTime;
+        else
+            return priorTime;
     }
 }

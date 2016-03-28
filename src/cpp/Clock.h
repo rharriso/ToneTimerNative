@@ -14,14 +14,22 @@ using namespace std;
 using namespace std::chrono;
 
 namespace tonetimer{
+
+    enum ClockState{
+        PLAYING,
+        PAUSED,
+        STOPPED
+    };
+
     class Clock {
     private:
         static shared_ptr<Clock> sharedClock;
+
+        // handle time from begining
         time_point<high_resolution_clock> startTime;
 
-        const milliseconds SWEEP_INTERVAL = milliseconds(8);
-        unique_ptr<map<string, string, function<void(milliseconds)>>> listeners;
-        function<void(milliseconds)> listener;
+        milliseconds priorTime = milliseconds(0);
+        ClockState state = ClockState::STOPPED;
 
     public:
         static std::shared_ptr<Clock> getSharedClock();
@@ -29,11 +37,9 @@ namespace tonetimer{
 
         void pause();
         void play();
-        void reset();
+        void stop();
 
-        // handle listeners
-        void addListener(string listenerUID, function<void(milliseconds) > lambda);
-        void removeListener(string listenerUID);
+        milliseconds getTime();
     };
 }
 

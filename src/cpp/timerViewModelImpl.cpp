@@ -24,27 +24,27 @@ namespace tonetimer {
     }
 
     TimerViewModelImpl::TimerViewModelImpl(const shared_ptr<TimerView> &view) {
-        this->mView = view;
+        mView = view;
+        mClock = Clock::getSharedClock();
         start = chrono::high_resolution_clock::now();
     }
 
     void TimerViewModelImpl::pause() {
-        mView->displayText(__PRETTY_FUNCTION__);
+        mClock->pause();
     }
 
     void TimerViewModelImpl::play() {
-        mView->displayText(__PRETTY_FUNCTION__);
+        mClock->play();
     }
 
     void TimerViewModelImpl::reset() {
-        mView->displayText(__PRETTY_FUNCTION__);
+        mClock->stop();
     }
 
     void TimerViewModelImpl::onTick() {
-        auto now = chrono::high_resolution_clock::now();
         stringstream ss;
         string numString;
-        ss << (now - start).count();
+        ss << mClock->getTime().count();
         ss >> numString;
         mView->displayText(numString);
     }

@@ -2,11 +2,15 @@
 
 #include <timerViewModel.hpp>
 #include <timerView.hpp>
+#include "Clock.h"
 
 namespace tonetimer {
     
     class TimerViewModelImpl : public tonetimer::TimerViewModel{
-        
+
+    private:
+        shared_ptr<Clock> mClock;
+
     public:
         TimerViewModelImpl(const std::shared_ptr<TimerView> & view);
 
