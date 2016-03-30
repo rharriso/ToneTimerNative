@@ -3,33 +3,10 @@
 //
 #include <iostream>
 #include "Clock.h"
+#include "StateMachine.h"
 
 using namespace std;
 
-
-const seconds TICK_INTERVAL = seconds(5);
-// interval settings
-seconds intervalDuration = seconds(30);
-seconds intervalBreak = seconds(50);
-
-// workout set settings
-int setSize = 5;
-int setCount = 5;
-seconds setBreak = seconds(120);
-
 int main(){
-    cout << "YOHO" << endl;
-
-    auto clock = tonetimer::Clock::getSharedClock();
-    clock->addListener("MAIN", [](chrono::milliseconds ms){
-        cout << '\r' << std::to_string(ms.count());
-    });
-    clock->play();
-
-    string ok;
-    cin >> ok;
-
-    clock->removeListener("MAIN");
-
     return 0;
 }
