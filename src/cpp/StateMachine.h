@@ -8,6 +8,7 @@
 #include <chrono>
 #include <memory>
 #include <vector>
+#include <string>
 
 using namespace std;
 using namespace std::chrono;
@@ -26,9 +27,9 @@ namespace tonetimer{
      */
     struct StateMachineSettings {
         milliseconds ramUpTime = milliseconds(5);
-        milliseconds intervalDuration;
-        milliseconds interValBreak;
-        milliseconds setBreak;
+        milliseconds intervalDuration = milliseconds(30);
+        milliseconds intervalBreak = milliseconds(50);
+        milliseconds setBreak = milliseconds(120);
 
         int intervalCount;
         int setCount;
@@ -38,14 +39,14 @@ namespace tonetimer{
      * State machine node
      */
     struct State {
-        time_point<high_resolution_clock> startTime;
-        time_point<high_resolution_clock> endTime;
+        milliseconds startTime;
+        milliseconds endTime;
         StateType type;
     };
 
     class StateMachine {
     private:
-        static shared_ptr<Clock> sharedClock;
+        static shared_ptr<StateMachine> sharedMachine;
 
         void generateStates();
 
@@ -58,8 +59,9 @@ namespace tonetimer{
         unique_ptr<StateMachineSettings> settings;
 
     public:
-        static shared_ptr<StateMachine> sharedStateMachine;
+        static shared_ptr<StateMachine> getSharedMachine();
         void initialize(StateMachineSettings settings);
+        string stateString();
     };
 }
 
