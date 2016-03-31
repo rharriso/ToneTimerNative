@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Circles</title>
+  </head>
+  <body>  
+    <svg width="500" height="1000">
+
+      <!--
+        r = 50
+        x = 100
+        y = 100
+        startAngle = 90
+        endAngle = 125
+      -->
+
+      <!-- flip angles because of quadrants or whatever -->
+      <path d="M 100 100
+              L 135.35533905932738 64.64466094067262
+              A 50 50 0 0 0 100 50
+              L 100 100
+              "
+            fill="purple"/>
+
+      <script>
+return ['M', x, y,
+       'L', x+Math.cos(startAngle)*r, y-(Math.sin(startAngle)*r), 
+       'A', r, r, 0, largeArc, 0, x+Math.cos(endAngle)*r, y-(Math.sin(endAngle)*r),
+       'L', x, y
+].join(' ');
+}
+      </script>
+    </svg>
+  </body>
+</html>
